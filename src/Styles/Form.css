@@ -1,0 +1,58 @@
+.form-main{
+    background-color: #F5EEC8;
+    height: 86vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-body{
+    height: 500px;
+    background-color: white;
+    width: 40%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-body input{
+    width: 80%;
+    height: 10px;
+    border-radius: 20px;
+    border: none;
+    background-color: #F5EEC8;
+    padding: 10px;
+    font-size: 17px;
+}
+
+select{
+    width: 80%;
+    height: 30px;
+    background-color: #F5EEC8;
+    border-radius: 20px;
+    border: none;
+}
+
+.book-btn{
+    width: 40%;
+    height: 35px;
+    margin-top: 20px;
+}
+
+.slot-input{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.slot-input input{
+    width: 50%;
+}
+.choose-btn{
+    width: 110%;
+    height: 35px;
+}

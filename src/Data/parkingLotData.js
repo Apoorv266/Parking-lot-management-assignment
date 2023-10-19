@@ -1,23 +1,26 @@
 
 
 export const parkingLotData = {
-    0: [{
+    Ground: [ { 
         parkinglotId: 1,
         vehicleData: [
             {
-                vehicleId: "1a",
+                vehicleId: "g-1a",
                 name: "car",
-                isAssigned: false
+                isAssigned: true, 
+                isBooked : false
             },
             {
-                vehicleId: "1b",
+                vehicleId: "g-1b",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "1c",
+                vehicleId: "g-1c",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             }
         ]
     },
@@ -25,19 +28,22 @@ export const parkingLotData = {
         parkinglotId: 2,
         vehicleData: [
             {
-                vehicleId: "2a",
+                vehicleId: "g-2a",
                 name: "car",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "2b",
+                vehicleId: "g-2b",
                 name: "bike",
-                isAssigned: false
+                isAssigned: true, 
+                isBooked : false
             },
             {
-                vehicleId: "2c",
+                vehicleId: "g-2c",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             }
         ]
     },
@@ -45,19 +51,22 @@ export const parkingLotData = {
         parkinglotId: 3,
         vehicleData: [
             {
-                vehicleId: "3a",
+                vehicleId: "g-3a",
                 name: "car",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "3b",
+                vehicleId: "g-3b",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "3c",
+                vehicleId: "g-3c",
                 name: "bike",
-                isAssigned: false
+                isAssigned: true, 
+                isBooked : false
             }
         ]
     },
@@ -65,40 +74,46 @@ export const parkingLotData = {
         parkinglotId: 4,
         vehicleData: [
             {
-                vehicleId: "4a",
+                vehicleId: "g-4a",
                 name: "car",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "4b",
+                vehicleId: "g-4b",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "4c",
+                vehicleId: "g-4c",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             }
         ]
     }], 
 
-    1: [{
+    First: [{
         parkinglotId: 1,
         vehicleData: [
             {
-                vehicleId: "1a",
+                vehicleId: "f-1a",
                 name: "car",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "1b",
+                vehicleId: "f-1b",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "1c",
+                vehicleId: "f-1c",
                 name: "bike",
-                isAssigned: false
+                isAssigned: true, 
+                isBooked : false
             }
         ]
     },
@@ -106,19 +121,22 @@ export const parkingLotData = {
         parkinglotId: 2,
         vehicleData: [
             {
-                vehicleId: "2a",
+                vehicleId: "f-2a",
                 name: "car",
-                isAssigned: false
+                isAssigned: true, 
+                isBooked : false
             },
             {
-                vehicleId: "2b",
+                vehicleId: "f-2b",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "2c",
+                vehicleId: "f-2c",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             }
         ]
     },
@@ -126,19 +144,22 @@ export const parkingLotData = {
         parkinglotId: 3,
         vehicleData: [
             {
-                vehicleId: "3a",
+                vehicleId: "f-3a",
                 name: "car",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "3b",
+                vehicleId: "f-3b",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "3c",
+                vehicleId: "f-3c",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             }
         ]
     },
@@ -146,40 +167,46 @@ export const parkingLotData = {
         parkinglotId: 4,
         vehicleData: [
             {
-                vehicleId: "4a",
+                vehicleId: "f-4a",
                 name: "car",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "4b",
+                vehicleId: "f-4b",
                 name: "bike",
-                isAssigned: false
+                isAssigned: true, 
+                isBooked : false
             },
             {
-                vehicleId: "4c",
+                vehicleId: "f-4c",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             }
         ]
     }],
 
-    2: [{
+    Second: [{
         parkinglotId: 1,
         vehicleData: [
             {
-                vehicleId: "1a",
+                vehicleId: "s-1a",
                 name: "car",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "1b",
+                vehicleId: "s-1b",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "1c",
+                vehicleId: "s-1c",
                 name: "bike",
-                isAssigned: false
+                isAssigned: true, 
+                isBooked : false
             }
         ]
     },
@@ -187,19 +214,22 @@ export const parkingLotData = {
         parkinglotId: 2,
         vehicleData: [
             {
-                vehicleId: "2a",
+                vehicleId: "s-2a",
                 name: "car",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "2b",
+                vehicleId: "s-2b",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "2c",
+                vehicleId: "s-2c",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             }
         ]
     },
@@ -207,19 +237,22 @@ export const parkingLotData = {
         parkinglotId: 3,
         vehicleData: [
             {
-                vehicleId: "3a",
+                vehicleId: "s-3a",
                 name: "car",
-                isAssigned: false
+                isAssigned: true, 
+                isBooked : false
             },
             {
-                vehicleId: "3b",
+                vehicleId: "s-3b",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "3c",
+                vehicleId: "s-3c",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             }
         ]
     },
@@ -227,21 +260,24 @@ export const parkingLotData = {
         parkinglotId: 4,
         vehicleData: [
             {
-                vehicleId: "4a",
+                vehicleId: "s-4a",
                 name: "car",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "4b",
+                vehicleId: "s-4b",
                 name: "bike",
-                isAssigned: false
+                isAssigned: false, 
+                isBooked : false
             },
             {
-                vehicleId: "4c",
+                vehicleId: "s-4c",
                 name: "bike",
-                isAssigned: false
+                isAssigned: true,
+                isBooked : false
             }
         ]
     }]
 }
-// }
+

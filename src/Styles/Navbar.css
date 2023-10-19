@@ -1,0 +1,15 @@
+.navbar-main{
+    background-color: #DADDB1;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+padding: 10px;
+}
+
+.links a{
+   margin-right: 60px;
+   font-size: 17px;
+   text-decoration: none;
+   color: black;
+}
