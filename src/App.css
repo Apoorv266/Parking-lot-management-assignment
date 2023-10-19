@@ -1,0 +1,46 @@
+.park-lot-wrapper{
+  display: grid;
+  grid-template-columns: repeat(3,  1fr);
+}
+
+.park-lot-container{
+  display: grid;
+  grid-template-columns: repeat(2,  1fr);
+ border: 1px solid black;
+ width: 400px;
+ height: 300px;
+ justify-items: center;
+  align-items: center;
+
+}
+
+.container-square {
+  width: 100px;
+  height: 70px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 10px;
+ border: 1px solid black;
+ border-radius: 10px;
+}
+
+.square{
+  width: 20px;
+  height: 50px;
+  background-color: green;
+  cursor: pointer;
+}
+
+.circle{
+  width: 20px;
+  height: 20px;
+  background-color: green;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.assigned{
+  background-color: red;
+}
+
