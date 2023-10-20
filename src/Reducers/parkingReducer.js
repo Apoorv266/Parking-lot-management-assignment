@@ -10,7 +10,6 @@ export const reducerFunc = (state, action) => {
     switch (type) {
         case "RESERVE_SLOT":
             let newState = {}
-            console.log(payload)
             const filterFunc = (data) => {
                 return data.map((item) => {
                     if (item.vehicleId === payload) {
@@ -34,7 +33,7 @@ export const reducerFunc = (state, action) => {
             return { ...state, parkingLotData: newState }
 
         case "ADD_CURRENT_SLOT":
-            return { ...state, currSlot: payload }
+            return state.currSlot.slotId === payload.slotId ?{ ...state, currSlot: {} } :  { ...state, currSlot: payload }
         default:
             break;
     }

@@ -1,7 +1,9 @@
 .park-lot-wrapper{
     display: grid;
     grid-template-columns: repeat(3,  1fr);
-   height: 70vh;
+   height: 60vh;
+   width: 95%;
+   margin: auto;
   }
   
   .park-lot-container{

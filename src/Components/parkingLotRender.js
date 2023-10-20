@@ -3,7 +3,7 @@ import "../Styles/parkingLot.css"
 import { contextData } from '../Contexts/parkingContext'
 const ParkingLotRender = ({ lotDetails, floorDetail }) => {
 
-    const { initialState, dispatch } = useContext(contextData)
+    const {dispatch } = useContext(contextData)
 
     const handleSlotClick = (itemVal) => {
         if (!itemVal.isalreadyBooked) {
@@ -11,7 +11,6 @@ const ParkingLotRender = ({ lotDetails, floorDetail }) => {
             dispatch({ type: "ADD_CURRENT_SLOT", payload :{slotId : itemVal.vehicleId, name : itemVal.name}})
         }
     }
-
 
     return (
         <div className='park-lot-head'>
