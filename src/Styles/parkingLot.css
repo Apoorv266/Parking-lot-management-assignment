@@ -54,6 +54,10 @@
   
 
   .booked{
+    background-color: blue;
+  }
+
+  .assigned{
     background-color: yellow;
   }
 

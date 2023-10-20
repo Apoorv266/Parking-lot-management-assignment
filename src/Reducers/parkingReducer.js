@@ -1,48 +1,48 @@
 import { parkingLotData } from "../Data/parkingLotData";
+import { addOrderFunc, checkoutFunc, reserveSlotFunc } from "../Utils/Utils";
 
 export const initialData = {
     parkingLotData: parkingLotData,
     currSlot: {},
-    orders: []
+    orders: [],
+    totalAmount: 0
 }
 
 export const reducerFunc = (state, action) => {
     const { type, payload } = action
     switch (type) {
         case "RESERVE_SLOT":
-            let newState = {}
-            const filterFunc = (data) => {
-                return data.map((item) => {
-                    if (item.vehicleId === payload) {
-                        return { ...item, isAssigned: !item.isAssigned }
-                    } else {
-                        return { ...item, isAssigned: false }
-                    }
-                })
-            }
 
-            const toggleFunc = (data) => {
-                return data.map((item) => {
-                    return { ...item, vehicleData: filterFunc(item.vehicleData) }
-                })
-            }
-
-            Object.keys(state.parkingLotData).forEach((item) => {
-                let obj = { [item]: toggleFunc(state.parkingLotData[item]) }
-                newState = { ...newState, ...obj }
-            })
-            return { ...state, parkingLotData: newState }
+            let assignedData = reserveSlotFunc(state.parkingLotData, payload)
+            return { ...state, parkingLotData: assignedData }
 
         case "ADD_CURRENT_SLOT":
             return state.currSlot.slotId === payload.slotId ? { ...state, currSlot: {} } : { ...state, currSlot: payload }
 
         case "ADD_ORDER":
-            let  createdAt = new Date();
-            // const currentHour = now.getHours();
-            // const currentMinute = now.getMinutes();
-            console.log("createdAt" , createdAt)
-            const obj = { ...payload, time:createdAt, id: state.orders.length + 1 }
-            return { ...state, currSlot: {}, orders: [...state.orders, obj] }
+
+            const updatedOrderData = addOrderFunc(state.parkingLotData, state.currSlot.slotId)
+
+            const obj = { ...payload, time: new Date(), id: state.orders.length + 1 }
+            
+            return { ...state, parkingLotData: updatedOrderData, currSlot: {}, orders: [...state.orders, obj] }
+
+        case "ADD_TOTAL":
+            console.log(payload)
+            if (payload.type === "car") {
+                let value = state.totalAmount + (payload.hour * 50)
+                return { ...state, totalAmount: value }
+            } else {
+                return { ...state, totalAmount: state.totalAmount + (payload.hour * 30) }
+            }
+
+
+        case "CHECKOUT_BOOKING":
+            let newArr = state.orders.filter((item) => item.id !== payload.orderId)
+
+            let updatedData = checkoutFunc(state.parkingLotData, payload.lotId)
+            console.log("updatedData", updatedData)
+            return { ...state, orders: newArr, parkingLotData: updatedData }
         default:
             break;
     }

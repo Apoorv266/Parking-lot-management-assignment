@@ -6,7 +6,7 @@ const ParkingLotRender = ({ lotDetails, floorDetail }) => {
     const {dispatch } = useContext(contextData)
 
     const handleSlotClick = (itemVal) => {
-        if (!itemVal.isalreadyBooked) {
+        if (!itemVal.isalreadyBooked && !itemVal.isBooked) {
             dispatch({ type: "RESERVE_SLOT", payload :itemVal.vehicleId})
             dispatch({ type: "ADD_CURRENT_SLOT", payload :{slotId : itemVal.vehicleId, name : itemVal.name}})
         }
@@ -22,11 +22,11 @@ const ParkingLotRender = ({ lotDetails, floorDetail }) => {
                     return (
                         <div className="container-square" key={item.parkinglotId}>
 
-                            {item.vehicleData.map((itemVal) => itemVal.name === "car" ? <div key={itemVal.vehicleId} className={`square ${itemVal.isalreadyBooked && "prebooked"} ${itemVal.isAssigned && "booked"}`} onClick={() => handleSlotClick(itemVal)} />
+                            {item.vehicleData.map((itemVal) => itemVal.name === "car" ? <div key={itemVal.vehicleId} className={`square ${itemVal.isalreadyBooked && "prebooked"} ${itemVal.isAssigned && "assigned"} ${itemVal.isBooked && "booked"}` } onClick={() => handleSlotClick(itemVal)} />
 
                                 :
 
-                                <div key={itemVal.vehicleId} className={`circle ${itemVal.isalreadyBooked && "prebooked"} ${itemVal.isAssigned && "booked"}`} onClick={() => handleSlotClick(itemVal)} />)}
+                                <div key={itemVal.vehicleId} className={`circle ${itemVal.isalreadyBooked && "prebooked"} ${itemVal.isAssigned && "assigned"} ${itemVal.isBooked && "booked"}`} onClick={() => handleSlotClick(itemVal)} />)}
 
                         </div>
                     )

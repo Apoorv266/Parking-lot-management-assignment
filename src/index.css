@@ -8,13 +8,13 @@
 
 
 button{
+  height: 50px;
+  width: 200px;
+  border: none;
+  font-size: 18px;
   cursor: pointer;
 }
 
-button{
-  height: 50px;
-  width: 200px;
-  border-radius: 10px;
-  border: none;
-  font-size: 18px;
+body{
+  background-color: #F5EEC8;;
 }

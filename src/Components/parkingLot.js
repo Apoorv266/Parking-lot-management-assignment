@@ -8,6 +8,10 @@ import ParkingLotGuide from './ParkingLotGuide'
 const ParkingLot = () => {
   const { initialState } = useContext(contextData)
   const { parkingLotData } = initialState
+
+  const cancelBtn = () =>{
+    localStorage.removeItem("form");
+  }
   return (
     <>
     <ParkingLotDetails/>
@@ -21,8 +25,9 @@ const ParkingLot = () => {
       </div>
       <div className='selected-btn'>
         <Link to={"/parking-form"}><button className='select-btn'>Done selection</button></Link>
-      
-      <button className='cancel-btn'>Cancel</button>
+        <Link to={"/"}>
+      <button className='cancel-btn' onClick={cancelBtn}>Cancel</button>
+      </Link>
       </div>
        
     </>

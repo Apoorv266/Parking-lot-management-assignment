@@ -41,3 +41,10 @@ width: 100px;
     width: 100%;
     margin-top: 20px;
 }
+
+.checkout-btn{
+    height: 40px;
+    width: 150px;
+    background-color: #ED7D31;
+    margin-bottom: 20px;
+}

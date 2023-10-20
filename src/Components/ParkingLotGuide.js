@@ -8,8 +8,14 @@ const ParkingLotGuide = () => {
             <div className='guide-txt'><div className="circle-outline" /> <p> - Bike</p></div>
             
             <div className='guide-txt'><div className={`square`} /> / <div className={`circle`} /> <p> - Not occupied</p> </div>
+
+
             <div className='guide-txt'><div className={`square prebooked`} />/<div className={`circle prebooked`} /> <p> - Booked by others</p></div>
-            <div className='guide-txt'><div className={`square booked`} />/<div className={`circle booked`} /> <p> - Assigned/booked by user</p></div>
+
+            <div className='guide-txt'><div className={`square assigned`} />/<div className={`circle assigned`} /> <p> - Assigned by user</p></div>
+
+              
+            <div className='guide-txt'><div className={`square booked`} />/<div className={`circle booked`} /> <p> - Booked by user</p></div>
         </div>
     )
 }

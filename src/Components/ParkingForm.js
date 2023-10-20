@@ -20,7 +20,6 @@ const ParkingForm = () => {
      }else{
         setForm((state) => ({...state, "slot": ""}))
      }
-    
     }, [])
 
     useEffect(() => {

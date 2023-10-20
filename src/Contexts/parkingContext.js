@@ -4,7 +4,14 @@ import { initialData, reducerFunc } from '../Reducers/parkingReducer'
 export const contextData = createContext()
 
 const ParkingContextWrapper = ({ children }) => {
-  const [initialState, dispatch] = useReducer(reducerFunc, initialData)
+  const [initialState, dispatch] = useReducer(reducerFunc,  JSON.parse(localStorage.getItem('initialState')) || initialData)
+
+  useEffect(() => {
+    localStorage.setItem('initialState', JSON.stringify(initialState));
+  }, [initialState])
+  
+
+  console.log("initialState", initialState)
   
 
   const sumFunc = () => {
@@ -12,7 +19,8 @@ const ParkingContextWrapper = ({ children }) => {
       car: 0,
       bike: 0,
       isalreadyBooked: 0,
-      isAssigned: 0
+      isAssigned: 0, 
+      isBooked: 0
     };
 
     const totals = Object.values(initialState.parkingLotData).reduce((acc, parkingLots) => {
@@ -29,6 +37,10 @@ const ParkingContextWrapper = ({ children }) => {
           if (vehicle.isAssigned) {
             acc.isAssigned++
           }
+
+          if (vehicle.isBooked) {
+            acc.isBooked++
+          }
         });
       });
       return acc;
@@ -37,7 +49,7 @@ const ParkingContextWrapper = ({ children }) => {
     return totals
   }
 
-console.log(initialState.orders)
+
   return (
     <contextData.Provider value={{ dispatch, initialState, sumFunc }}>{children}</contextData.Provider>
   )

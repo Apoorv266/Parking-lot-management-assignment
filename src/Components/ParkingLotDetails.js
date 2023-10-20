@@ -4,7 +4,7 @@ import { contextData } from '../Contexts/parkingContext'
 const ParkingLotDetails = () => {
     const { initialState, sumFunc } = useContext(contextData)
     const {currSlot} = initialState
-    const {car, bike, isalreadyBooked, isAssigned}  = sumFunc()
+    const {car, bike, isalreadyBooked, isAssigned, isBooked}  = sumFunc()
   return (
     <div className='detail-main'>
 <div>
@@ -12,7 +12,8 @@ const ParkingLotDetails = () => {
 <h3>Total cars: {car}</h3>
 <h3>Total bikes: {bike}</h3>
 <h3>Total booked spots : {isalreadyBooked}</h3>
-<h3>Total Vacant spots : {((car + bike) - isalreadyBooked) - isAssigned}</h3>
+<h3>Total Vacant spots : {((car + bike) - (isalreadyBooked + isBooked)) - isAssigned}</h3>
+<h3>Total spots booked by you : {isBooked}</h3>
 </div>
 
 <div>
