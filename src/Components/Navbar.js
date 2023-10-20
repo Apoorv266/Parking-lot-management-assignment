@@ -11,6 +11,7 @@ const Navbar = () => {
         <Link to={"/"}>Home</Link>
         <Link to={"/parking-form"}>Book your slot !</Link>
         <Link to={"/parking-lots"}>Parking lots</Link>
+        <Link to={"/bookings"}>Bookings</Link>
       </div>
     </div>
   )

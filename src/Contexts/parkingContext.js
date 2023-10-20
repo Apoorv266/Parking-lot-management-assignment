@@ -37,7 +37,7 @@ const ParkingContextWrapper = ({ children }) => {
     return totals
   }
 
-
+console.log(initialState.orders)
   return (
     <contextData.Provider value={{ dispatch, initialState, sumFunc }}>{children}</contextData.Provider>
   )

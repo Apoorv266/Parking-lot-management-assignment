@@ -3,23 +3,23 @@ import "../Styles/Form.css"
 import { Link } from 'react-router-dom'
 import { contextData } from '../Contexts/parkingContext'
 const ParkingForm = () => {
-    const { initialState } = useContext(contextData)
-    const {currSlot} = initialState
-    const [form, setForm] = useState(JSON.parse(localStorage.getItem('form')) || {
+    const { initialState , dispatch} = useContext(contextData)
+
+    const formData = {
         name: "",
         email: "", 
         no : "", 
         type : "null", 
         slot: ""
-    })
+    }
+    const [form, setForm] = useState(JSON.parse(localStorage.getItem('form')) ||formData )
 
     useEffect(() => {
-     if (currSlot) {
-        setForm((state) => ({...state, "slot" : currSlot.slotId}))
+     if (initialState?.currSlot) {
+        setForm((state) => ({...state, "slot" : initialState?.currSlot?.slotId}))
      }else{
         setForm((state) => ({...state, "slot": ""}))
      }
-
     
     }, [])
 
@@ -32,8 +32,17 @@ const ParkingForm = () => {
 setForm((state) => ({...state, [e.target.name] : e.target.value}))
     }
 
+    const isFormEmpty =  ()=>{
+       return Object.values(form).find((item) => item === "" || item === null)
+    }
+
     const testFunc = () =>{
-        console.log(form)
+        if (isFormEmpty()) {
+            console.log("form is empty")
+        }else{
+            dispatch({type : "ADD_ORDER" , payload: form})
+            setForm(formData)
+        }
     }
     return (
         <div className='form-main'>
@@ -67,7 +76,7 @@ setForm((state) => ({...state, [e.target.name] : e.target.value}))
                 </div>
 
 
-                <button className='book-btn' onClick={testFunc}>Confirm slot ! </button>
+                <button className='book-btn' onClick={testFunc} disabled={!initialState?.currSlot?.slotId && true}>Confirm slot ! </button>
             </div>
 
         </div>

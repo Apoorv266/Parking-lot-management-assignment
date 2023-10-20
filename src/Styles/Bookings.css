@@ -1,0 +1,43 @@
+.booking-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.booking-amount{
+    height: 50px;
+    border: 1px solid black;
+    margin-top: 20px;
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.booking-amount button{ 
+height: 40px;
+width: 100px;
+}
+
+.booking-container{
+    min-height: 50px;
+    border: 1px solid black;
+    margin-top: 20px;
+    width: 80%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+
+.booking-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}

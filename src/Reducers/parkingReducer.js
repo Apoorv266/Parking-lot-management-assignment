@@ -2,7 +2,8 @@ import { parkingLotData } from "../Data/parkingLotData";
 
 export const initialData = {
     parkingLotData: parkingLotData,
-    currSlot: {}
+    currSlot: {},
+    orders: []
 }
 
 export const reducerFunc = (state, action) => {
@@ -33,7 +34,15 @@ export const reducerFunc = (state, action) => {
             return { ...state, parkingLotData: newState }
 
         case "ADD_CURRENT_SLOT":
-            return state.currSlot.slotId === payload.slotId ?{ ...state, currSlot: {} } :  { ...state, currSlot: payload }
+            return state.currSlot.slotId === payload.slotId ? { ...state, currSlot: {} } : { ...state, currSlot: payload }
+
+        case "ADD_ORDER":
+            let  createdAt = new Date();
+            // const currentHour = now.getHours();
+            // const currentMinute = now.getMinutes();
+            console.log("createdAt" , createdAt)
+            const obj = { ...payload, time:createdAt, id: state.orders.length + 1 }
+            return { ...state, currSlot: {}, orders: [...state.orders, obj] }
         default:
             break;
     }
