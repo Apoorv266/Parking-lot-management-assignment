@@ -1,29 +1,45 @@
-import React, { createContext, useReducer } from 'react'
+import React, { createContext, useEffect, useReducer } from 'react'
 import { initialData, reducerFunc } from '../Reducers/parkingReducer'
 
 export const contextData = createContext()
 
-const ParkingContextWrapper = ({children}) => {
-    const [initialState, dispatch] = useReducer(reducerFunc, initialData )
+const ParkingContextWrapper = ({ children }) => {
+  const [initialState, dispatch] = useReducer(reducerFunc, initialData)
+  
 
-    function countCarOccurrences(total, parkingLot) {
-      return total + parkingLot.vehicleData.reduce((count, vehicle) => {
-        if (vehicle.name === "car") {
-          return count+=1
-        }else{
-          return count
-        }
-      }, 0);
+  const sumFunc = () => {
+    const initialValue = {
+      car: 0,
+      bike: 0,
+      isalreadyBooked: 0,
+      isAssigned: 0
+    };
+
+    const totals = Object.values(initialState.parkingLotData).reduce((acc, parkingLots) => {
+      parkingLots.forEach(parkingLot => {
+        parkingLot.vehicleData.forEach(vehicle => {
+          if (vehicle.name === "car") {
+            acc.car++;
+          } else if (vehicle.name === "bike") {
+            acc.bike++;
+          }
+          if (vehicle.isalreadyBooked)  {
+            acc.isalreadyBooked++;
+          }
+          if (vehicle.isAssigned) {
+            acc.isAssigned++
+          }
+        });
+      });
+      return acc;
+    }, initialValue);
+
+    return totals
   }
-  
-  // Use reduce to iterate through each category (Ground, First, Second)
-  const totalCarOccurrences = Object.values(initialState.parkingLotData).reduce((total, category) => {
-      return total + category.reduce(countCarOccurrences, 0);
-  }, 0);
-  
-  console.log("Total number of 'car' occurrences:", totalCarOccurrences);
-    return (
-    <contextData.Provider value={{dispatch,initialState }}>{children}</contextData.Provider>
+
+
+  return (
+    <contextData.Provider value={{ dispatch, initialState, sumFunc }}>{children}</contextData.Provider>
   )
 }
 

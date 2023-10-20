@@ -4,12 +4,14 @@ import { contextData } from '../Contexts/parkingContext'
 import "../Styles/parkingLot.css"
 import { Link } from 'react-router-dom'
 import ParkingLotDetails from './ParkingLotDetails'
+import ParkingLotGuide from './ParkingLotGuide'
 const ParkingLot = () => {
   const { initialState } = useContext(contextData)
   const { parkingLotData } = initialState
   return (
     <>
     <ParkingLotDetails/>
+    <ParkingLotGuide/>
       <div className='park-lot-wrapper'>
         {Object.keys(parkingLotData)?.map(item => {
           return (
