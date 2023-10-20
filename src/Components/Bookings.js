@@ -70,7 +70,7 @@ const Bookings = () => {
 
 
                         </div>
-                        <button className='checkout-btn' onClick={() => bookingBtn(parkingTimeFunc(item.time).hours, item.type, item.id, item.slot)}>Check out</button>
+                        <button className='checkout-btn' onClick={() => bookingBtn(parkingTimeFunc(item.time).hours, item.type, item.id, item.slot)}>Check out from parking lot</button>
                     </div>
                 )
             }) : <h1 className='empty-msg'>No parking space booked !</h1>}
