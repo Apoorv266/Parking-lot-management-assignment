@@ -49,9 +49,8 @@ const Bookings = () => {
         <div className='booking-wrapper'>
             <div className='booking-amount'>
                 <h1>  Due amount : ${initialState.totalAmount}</h1>
-                {/* <button>Pay</button> */}
             </div>
-            {orders?.map((item) => {
+            {orders.length > 0 ? orders?.map((item) => {
                 return (
                     <div className='booking-container' key={item.id}>
                         <div className='booking-details'>
@@ -74,7 +73,7 @@ const Bookings = () => {
                         <button className='checkout-btn' onClick={() => bookingBtn(parkingTimeFunc(item.time).hours, item.type, item.id, item.slot)}>Check out</button>
                     </div>
                 )
-            })}
+            }) : <h1 className='empty-msg'>No parking space booked !</h1>}
 <ToastComponent/>
         </div>
     )

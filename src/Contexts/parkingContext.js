@@ -9,10 +9,6 @@ const ParkingContextWrapper = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('initialState', JSON.stringify(initialState));
   }, [initialState])
-  
-
-  console.log("initialState", initialState)
-  
 
   const sumFunc = () => {
     const initialValue = {

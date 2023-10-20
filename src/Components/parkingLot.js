@@ -24,7 +24,7 @@ const ParkingLot = () => {
         })}
       </div>
       <div className='selected-btn'>
-        <Link to={"/parking-form"}><button className='select-btn'>Done selection</button></Link>
+        <Link to={"/parking-form"}><button className='select-btn'>Book this spot</button></Link>
         <Link to={"/"}>
       <button className='cancel-btn' onClick={cancelBtn}>Cancel</button>
       </Link>
