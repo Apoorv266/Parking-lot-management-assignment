@@ -19,6 +19,8 @@ export const reducerFunc = (state, action) => {
         case "ADD_CURRENT_SLOT":
             return state.currSlot.slotId === payload.slotId ? { ...state, currSlot: {} } : { ...state, currSlot: payload }
 
+            case "EMPTY_CURRENT_SLOT":
+            return  { ...state, currSlot: {} } 
         case "ADD_ORDER":
 
             const updatedOrderData = addOrderFunc(state.parkingLotData, state.currSlot.slotId)

@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from 'react'
 import "../Styles/Form.css"
 import { Link } from 'react-router-dom'
 import { contextData } from '../Contexts/parkingContext'
+import { ToastComponent, errorToastFunc, toastFunc } from './ToastContainer'
+import { isFormEmpty } from '../Utils/Utils'
 const ParkingForm = () => {
     const { initialState , dispatch} = useContext(contextData)
-
+const {currSlot} = initialState
     const formData = {
         name: "",
         email: "", 
@@ -15,7 +17,7 @@ const ParkingForm = () => {
     const [form, setForm] = useState(JSON.parse(localStorage.getItem('form')) ||formData )
 
     useEffect(() => {
-     if (initialState?.currSlot) {
+     if (Object.keys(initialState?.currSlot).length > 0) {
         setForm((state) => ({...state, "slot" : initialState?.currSlot?.slotId}))
      }else{
         setForm((state) => ({...state, "slot": ""}))
@@ -31,16 +33,19 @@ const ParkingForm = () => {
 setForm((state) => ({...state, [e.target.name] : e.target.value}))
     }
 
-    const isFormEmpty =  ()=>{
-       return Object.values(form).find((item) => item === "" || item === null)
-    }
-
-    const testFunc = () =>{
-        if (isFormEmpty()) {
-            console.log("form is empty")
+console.log("form", form)
+    const submitFormFunc = () =>{
+        if (isFormEmpty(form)) {
+            errorToastFunc(`One or more field is empty!`)
         }else{
-            dispatch({type : "ADD_ORDER" , payload: form})
-            setForm(formData)
+            if (form.type !== currSlot.name) {
+                errorToastFunc(`Please choose slot suitable for ${form.type} !`)
+            }else{
+                dispatch({type : "ADD_ORDER" , payload: form})
+                setForm(formData)
+                toastFunc("Parking spot booked successfully !")
+                dispatch({type : "EMPTY_CURRENT_SLOT"})
+            }
         }
     }
     return (
@@ -75,9 +80,9 @@ setForm((state) => ({...state, [e.target.name] : e.target.value}))
                 </div>
 
 
-                <button className='book-btn' onClick={testFunc} disabled={!initialState?.currSlot?.slotId && true}>Confirm slot ! </button>
+                <button className='book-btn' onClick={submitFormFunc} disabled={!initialState?.currSlot?.slotId && true}>Confirm slot ! </button>
             </div>
-
+<ToastComponent/>
         </div>
     )
 }

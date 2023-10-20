@@ -76,3 +76,13 @@ export const addOrderFunc = (state, currSlotId) =>{
 
    return newStateVal
 }
+
+
+export const isFormEmpty =  (form)=>{
+    for (const key in form) {
+        if (form[key] === "" || form[key] === "null") {
+          return true;
+        }
+      }
+      return false;
+}

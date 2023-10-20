@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "../Styles/Bookings.css"
 import { contextData } from '../Contexts/parkingContext'
+import { ToastComponent, toastFunc } from './ToastContainer'
 const Bookings = () => {
-    const { initialState , dispatch} = useContext(contextData)
+    const { initialState, dispatch } = useContext(contextData)
     const { orders } = initialState
     const [currentTime, setCurrentTime] = useState(new Date());
 
@@ -31,17 +32,18 @@ const Bookings = () => {
 
         // Calculates the time difference in minutess
         const timeDifferenceMinutes = timeDifferenceMs / (1000 * 60);
-        const timeDifferenceHours= timeDifferenceMs / (1000 * 60 * 60);
-        return {minutes : timeDifferenceMinutes.toFixed(0) , hours : timeDifferenceHours.toFixed(0)}
+        const timeDifferenceHours = timeDifferenceMs / (1000 * 60 * 60);
+        return { minutes: timeDifferenceMinutes.toFixed(0), hours: timeDifferenceHours.toFixed(0) }
     }
 
-    const bookingBtn = (hour, type, orderId, lotId) =>{
+    const bookingBtn = (hour, type, orderId, lotId) => {
         if (hour <= 1) {
-     dispatch({type : "ADD_TOTAL", payload : {type : type , hour : 1}})
-        }else{
-            dispatch({type : "ADD_TOTAL", payload : {type : type , hour : hour}})
+            dispatch({ type: "ADD_TOTAL", payload: { type: type, hour: 1 } })
+        } else {
+            dispatch({ type: "ADD_TOTAL", payload: { type: type, hour: hour } })
         }
-        dispatch({type : "CHECKOUT_BOOKING", payload : {lotId : lotId , orderId : orderId}})
+        dispatch({ type: "CHECKOUT_BOOKING", payload: { lotId: lotId, orderId: orderId } })
+        toastFunc("Successfully checked out !")
     }
     return (
         <div className='booking-wrapper'>
@@ -69,11 +71,11 @@ const Bookings = () => {
 
 
                         </div>
-                        <button className='checkout-btn' onClick={()=>bookingBtn(parkingTimeFunc(item.time).hours, item.type, item.id,item.slot )}>Check out</button>
+                        <button className='checkout-btn' onClick={() => bookingBtn(parkingTimeFunc(item.time).hours, item.type, item.id, item.slot)}>Check out</button>
                     </div>
                 )
             })}
-
+<ToastComponent/>
         </div>
     )
 }
