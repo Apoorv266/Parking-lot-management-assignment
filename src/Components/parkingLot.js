@@ -8,7 +8,7 @@ const ParkingLot = () => {
   return (
     <>
       <div className='park-lot-wrapper'>
-        {Object.keys(parkingLotData).map(item => {
+        {Object.keys(parkingLotData)?.map(item => {
           return (
             <ParkingLotRender lotDetails={parkingLotData[item]} floorDetail={item} key={item} />
           )

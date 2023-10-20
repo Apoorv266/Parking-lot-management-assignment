@@ -5,7 +5,7 @@ export const contextData = createContext()
 
 const ParkingContextWrapper = ({children}) => {
     const [initialState, dispatch] = useReducer(reducerFunc, initialData )
-
+console.log(initialState)
     return (
     <contextData.Provider value={{dispatch,initialState }}>{children}</contextData.Provider>
   )
